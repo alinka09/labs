@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <ng-container *ngFor="let card of cards; let i = index">
+      <div *ngIf="card.status" class="col m-3 border border-warning  col-md-3"
+        style="width: 18rem; background-color: green;">
+        <div class="card-body">
+          <p>id - {{card.id}}</p>
+          <h5 class="card-title">{{card.name}}</h5>
+          <p (click)="delete(i)" class="btn btn-primary">Удалить</p>
+        </div>
+      </div>
+      <div *ngIf="!card.status" class="col m-3 border border-warning col-md-3"
+        style="width: 18rem; background-color: red;">
+        <div class="card-body">
+          <p>id - {{card.id}}</p>
+          <h5 class="card-title">{{card.name}}</h5>
+          <p (click)="delete(i)" class="btn btn-primary">Удалить</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div class="row">
+  <div>
+    <p>Название карточки:</p>
+    <input type="text" name="name" id="name" #name>
+    <select name="type" id="type" #type>
+      <option value="1">Активна</option>
+      <option value="0">Неактивна</option>
+    </select>
+    <button (click)="add(name.value, type.value)">Добавить</button>
+  </div>
+</div>
