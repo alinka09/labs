@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+  <app-addform-worker (addWorker)="onAddWorker($event)"></app-addform-worker>
+  <app-table-workers *ngIf="!this.modal" [title]="'Программисты'" [workers]="getByType(myWorkerType.programmer)"
+    (editWorker)="onEditById($event)" (deleteWorker)="onDeleteById($event)"></app-table-workers>
+  <app-table-workers *ngIf="!this.modal" [title]="'Дизайнеры'" [workers]="getByType(myWorkerType.designer)"
+    (editWorker)="onEditById($event)" (deleteWorker)="onDeleteById($event)"></app-table-workers>
+  <app-table-workers *ngIf="!this.modal" [title]="'Рекламщики'" [workers]="getByType(myWorkerType.copywriter)"
+    (editWorker)="onEditById($event)" (deleteWorker)="onDeleteById($event)"></app-table-workers>
+  <app-table-workers *ngIf="!this.modal" [title]="'Менеджеры'" [workers]="getByType(myWorkerType.manager)"
+    (editWorker)="onEditById($event)" (deleteWorker)="onDeleteById($event)"></app-table-workers>
+
+  <!-- Модальное окно -->
+  <div *ngIf="this.modal" [formGroup]="editForm" class="new-modal">
+    <div class="mb-3">
+      <h3>Редактирование</h3>
+    </div>
+    <div class="mb-3">
+      <input type="text" name="" formControlName="name" [(ngModel)]="name" class="form-control">
+      <input type="text" name="" formControlName="surname" [(ngModel)]="surname" class="form-control">
+      <input type="text" [textMask]="{mask: mask}" name="" formControlName="phone" [(ngModel)]="phone"
+        class="form-control">
+      <input type="hidden" formControlName="id" [(ngModel)]="id">
+    </div>
+    <div class="mb-3">
+      <button (click)="onEditData()" class="btn btn-primary">Применить</button>
+      <button (click)="onClose()" class="btn btn-danger ml-3">Выход</button>
+    </div>
+  </div>
+</div>
