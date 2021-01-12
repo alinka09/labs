@@ -1,0 +1,55 @@
+<div style="margin-top: 20px;" class="container-fluid d-flex flex-column align-items-center">
+  <div class="row">
+    <div class="d-flex flex-row align-items-center ">
+      <label class="m-2" for="exampleInputEmail1">Фильтрация</label>
+      <input type="text" class="form-control w-25" id="exampleInputEmail1" [(ngModel)]="naming"
+        placeholder="Имя Фамилия">
+      <label class="m-2" for="exampleInputEmail1">Сортировка по ID</label>
+      <select class="form-select w-25" aria-label="Default select example" [(ngModel)]="age">
+        <option selected>ID</option>
+        <option value="0">По убыванию</option>
+        <option value="1">По возрастанию</option>
+      </select>
+      <label class="m-2" for="exampleInputEmail1">Сортировка по Возрасту</label>
+      <select class="form-select w-25" aria-label="Default select example" [(ngModel)]="id">
+        <option selected>Возраст</option>
+        <option value="0">По убыванию</option>
+        <option value="1">По возрастанию</option>
+      </select>
+    </div>
+    <div class="container">
+      <h3 class="row">IT-отдел</h3>
+      <div *ngFor="let user of users | fiSort : naming | ageSort : age | idSort : id" class="row">
+        <!-- добавляем фильтрацию -->
+        <app-user *ngIf="user.place == 0" [info]="user" [arr]="users"></app-user>
+        <!-- импортируем компонент класса app-user и передаем в него объект и массив -->
+      </div>
+    </div>
+    <div class="container">
+      <h3 class="row">Отдел продаж</h3>
+      <div *ngFor="let user of users | fiSort : naming | ageSort : age | idSort : id" class="row">
+        <!-- добавляем фильтрацию -->
+        <app-user *ngIf="user.place == 1" [info]="user" [arr]="users"></app-user>
+        <!-- импортируем компонент класса app-user и передаем в него объект и массив -->
+      </div>
+    </div>
+    <div class="container">
+      <h3 class="row">Отдел доставки</h3>
+      <div *ngFor="let user of users | fiSort : naming | ageSort : age | idSort : id" class="row">
+        <!-- добавляем фильтрацию -->
+        <app-user *ngIf="user.place == 2" [info]="user" [arr]="users"></app-user>
+        <!-- импортируем компонент класса app-user и передаем в него объект и массив -->
+      </div>
+    </div>
+    <div class="container">
+      <h3 class="row">Юридический отдел</h3>
+      <div *ngFor="let user of users | fiSort : naming | ageSort : age | idSort : id" class="row">
+        <!-- добавляем фильтрацию -->
+        <app-user *ngIf="user.place == 3" [info]="user" [arr]="users"></app-user>
+        <!-- импортируем компонент класса app-user и передаем в него объект и массив -->
+      </div>
+    </div>
+  </div>
+</div>
+<app-add-user-form></app-add-user-form>
+<!-- форма добавления пользователя -->

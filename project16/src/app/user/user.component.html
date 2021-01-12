@@ -1,0 +1,9 @@
+<div class="d-flex align-center justify-content-around">
+  <p><span class="fw-bold">Фамилия:</span> {{info.surname}}</p>
+  <p><span class="fw-bold">Имя:</span> {{info.name}}</p>
+  <p><span class="fw-bold">Отчество:</span> {{info.lastname}}</p>
+  <p><span class="fw-bold">Возраст:</span> {{getUserAge()}}</p>
+  <p><span class="fw-bold">Отдел:</span> {{getNamePlace()}}</p>
+  <button [routerLink]="info.id" class="mb-1 btn btn-success rounded">Редактировать</button>
+  <button (click)="deleteUser(info)" class="mb-1 btn btn-danger rounded">Удалить</button>
+</div>

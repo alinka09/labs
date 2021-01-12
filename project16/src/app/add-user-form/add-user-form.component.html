@@ -1,0 +1,45 @@
+<div class="d-flex flex-column align-items-center">
+  <h3 class="mt-2">Добавление нового сотрудника</h3>
+  <form [formGroup]="userForm" class="form-horizontal p-2">
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="col-sm-2 control-label">Фамилия</label>
+      <input type="text" class="form-control" formControlName="surname" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Имя</label>
+      <input type="text" class="form-control" formControlName="name" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Отчество</label>
+      <input type="text" class="form-control" formControlName="lastname" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Телефон</label>
+      <input type="text" class="form-control" formControlName="phone" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="text" class="form-control" formControlName="email" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Дата рождения</label>
+      <input type="text" class="form-control" formControlName="birthday" id="exampleInputEmail1"
+        aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Отдел</label>
+      <select class="form-select" formControlName="place" aria-label="Default select example">
+        <option value="0">IT отдел</option>
+        <option value="1">Отдел продаж</option>
+        <option value="2">Отдел доставки</option>
+        <option value="3">Юридический отдел</option>
+      </select>
+    </div>
+    <button [disabled]="!userForm.valid" (click)="addUserData()" class="btn btn-success">Добавить</button>
+  </form>
+</div>

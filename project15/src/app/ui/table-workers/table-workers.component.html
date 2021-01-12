@@ -1,0 +1,38 @@
+<ng-container *ngIf="workers.length > 0">
+  <div class="row">
+    <div class="col-12">
+      <h5>{{ title }}</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" [style.width]="'100px'">#</th>
+            <th scope="col" [style.width]="'40%'">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Телефон</th>
+            <th scope="col" [style.width]="'150px'"></th>
+            <!-- поля для фильтрации -->
+            <input type="text" class="form-control" placeholder="Имя" [(ngModel)]="name">
+            <input type="text" class="form-control" placeholder="Фамилия" [(ngModel)]="surname">
+          </tr>
+        </thead>
+        <tbody>
+          <!-- переменные, которые передаются в класс  appFactorial, для фильтрации-->
+          <tr *ngFor="let worker of workers | appFactorial : name : surname">
+            <th scope="row">{{ worker.id }}</th>
+            <td>{{ worker.name }}</td>
+            <td>{{ worker.surname }}</td>
+            <td>{{ worker.phone }}</td>
+            <td>
+              <button class="btn btn-outline-warning btn-sm" (click)="onEditWorker(worker)">
+                Редактровать
+              </button>
+              <button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">
+                Удалить
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>
