@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { UserDataService } from '../user-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DbConnectService } from '../service/db-connect.service'; // Подключение класса с подключением к БД
 
 @Component({
   selector: 'app-add-user-form',
@@ -15,11 +16,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddUserFormComponent implements OnInit {
   userForm: FormGroup = new FormGroup({}); //инициализируем форму
-
+  users: Data[] = [];
   constructor(
     private userDataService: UserDataService,
-    private router: Router
-  ) {} //импортируем массив с пользователями и роутинг
+    private router: Router,
+    private dbConnectService: DbConnectService // Создание переменной класса
+  ) {} //передаем массив, роутинг, бд
 
   ngOnInit(): void {
     //инициализируем инпуты в форме
@@ -32,13 +34,13 @@ export class AddUserFormComponent implements OnInit {
       birthday: new FormControl('', [Validators.required]),
       place: new FormControl('', [Validators.required]),
     });
+    this.getData(); // Запись данных из БД в массив
   }
 
-  addUserData() {
+  async addUserData() {
     //добавляем данные в массив
     let obj = {} as Data; //инициfkbpbhetv объект, чтобы появились нужные поля и в них передаем данные
-    obj.id =
-      this.userDataService.users[this.userDataService.users.length - 1].id + 1; //передача данных 40-47 строка
+    obj.id = this.users[this.users.length - 1].id + 1; //передача данных 40-47 строка
     obj.surname = this.userForm.get('surname')?.value;
     obj.name = this.userForm.get('name')?.value;
     obj.lastname = this.userForm.get('lastname')?.value;
@@ -46,7 +48,9 @@ export class AddUserFormComponent implements OnInit {
     obj.email = this.userForm.get('email')?.value;
     obj.birthday = this.userForm.get('birthday')?.value;
     obj.place = parseInt(this.userForm.get('place')?.value);
-    this.userDataService.users.push(obj); //добавляем данные 48-55 строка
+    // this.userDataService.users.push(obj); //добавляем данные 48-55 строка
+    await this.dbConnectService.postWorkers(obj); // Добавление пользователей в БД
+    this.getData();
     this.userForm.get('surname')?.setValue(''); //setValue - обнуляем все значения в инпутах
     this.userForm.get('name')?.setValue('');
     this.userForm.get('lastname')?.setValue('');
@@ -54,6 +58,15 @@ export class AddUserFormComponent implements OnInit {
     this.userForm.get('email')?.setValue('');
     this.userForm.get('birthday')?.setValue('');
     this.userForm.get('place')?.setValue('');
+  }
+
+  async getData() {
+    // Получение данных из БД
+    try {
+      this.users = await this.dbConnectService.getWorkers();
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 interface Data {

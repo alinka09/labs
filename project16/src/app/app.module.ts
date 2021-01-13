@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiSortPipe } from './sort/fi-sort.pipe';
 import { IdSortPipe } from './sort/id-sort.pipe';
 import { AgeSortPipe } from './sort/age-sort.pipe';
+import { HttpClientModule } from '@angular/common/http';
 import { AddUserFormComponent } from './add-user-form/add-user-form.component';
 
 @NgModule({
@@ -28,7 +29,7 @@ import { AddUserFormComponent } from './add-user-form/add-user-form.component';
     AgeSortPipe,
     AddUserFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [
     AppComponent,

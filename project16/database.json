@@ -1,0 +1,84 @@
+{
+  "workers": [
+    {
+      "id": 10,
+      "surname": "Иванов",
+      "name": "Иван",
+      "lastname": "Иванович",
+      "phone": "+7-123-456-78-90",
+      "email": "mail1@mail.ru",
+      "birthday": "2001-01-01",
+      "place": 0
+    },
+    {
+      "id": 11,
+      "surname": "Федоров",
+      "name": "Федор",
+      "lastname": "Федорович",
+      "phone": "+7-111-222-33-33",
+      "email": "mail2@mail.ru",
+      "birthday": "2002-02-02",
+      "place": 0
+    },
+    {
+      "id": 12,
+      "surname": "Петров",
+      "name": "Петр",
+      "lastname": "Петрович",
+      "phone": "+7-222-222-22-22",
+      "email": "mail3@mail.ru",
+      "birthday": "2003-03-03",
+      "place": 3
+    },
+    {
+      "id": 13,
+      "surname": "Олегов",
+      "name": "Олег",
+      "lastname": "Олегович",
+      "phone": "+7-333-333-33-33",
+      "email": "mail4@mail.ru",
+      "birthday": "2004-04-04",
+      "place": 1
+    },
+    {
+      "id": 14,
+      "surname": "Максимов",
+      "name": "Максим",
+      "lastname": "Максимович",
+      "phone": "+7-444-444-44-44",
+      "email": "mail5@mail.ru",
+      "birthday": "2005-05-05",
+      "place": 1
+    },
+    {
+      "id": 15,
+      "surname": "Сергеев",
+      "name": "Сергей",
+      "lastname": "Сергеевич",
+      "phone": "+7-444-444-44-44",
+      "email": "sample6@mail.ru",
+      "birthday": "2006-01-06",
+      "place": 2
+    },
+    {
+      "id": 16,
+      "surname": "Никитов",
+      "name": "Никита",
+      "lastname": "Никитич",
+      "phone": "+7-666-666-66-66",
+      "email": "mail7@mail.ru",
+      "birthday": "2007-07-07",
+      "place": 2
+    },
+    {
+      "id": 17,
+      "surname": "Степанов",
+      "name": "Степан",
+      "lastname": "Степанович",
+      "phone": "+7-122-122-12-12",
+      "email": "mail8@mail.ru",
+      "birthday": "2008-08-08",
+      "place": 3
+    }
+  ]
+}

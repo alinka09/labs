@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DbConnectService } from '../service/db-connect.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -6,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  constructor() {}
+  constructor(private dbConnectService: DbConnectService, private router: Router) {}
 
   @Input() info: any; //передаем инфу о пользовактелями
 
@@ -38,6 +40,10 @@ export class UserComponent implements OnInit {
     //
     return 2021 - this.info.birthday.split('-')[0]; //возвращает возраст пользователя
   }
+  routeTo(info: Data){
+    this.router.navigate(['user/' + info.id],  { queryParams: info }); // Передресация на страницу с редактированием, и передача объекта пользователя
+  }
+
   deleteUser(user: any) {
     //удаляет пользователя, передаем через user-list.html массив в эту функцию
     for (let i = 0; i < this.arr.length; i++) {
@@ -45,8 +51,20 @@ export class UserComponent implements OnInit {
       if (user.id == this.arr[i].id) {
         //если id совпадает
         this.arr.splice(i, 1); //удаляем через splice
+        this.dbConnectService.deleteWorkers(user.id); // Запрос к БД на удаление пользователя
         break;
       }
     }
   }
+  
+}
+interface Data {
+  id: number;
+  surname: string;
+  name: string;
+  lastname: string;
+  phone: string;
+  email: string;
+  birthday: string;
+  place: number;
 }
